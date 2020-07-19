@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
     pacDotEaten()
     powerPelletEaten()
     checkForGameOver()
-    // checkForWin()
+    checkForWin()
     }
 
     document.addEventListener('keyup', movePacman)
@@ -205,6 +205,16 @@ document.addEventListener('DOMContentLoaded', () => {
             document.removeEventListener('keyup', movePacman)
             setTimeout(function() {alert('Game Over!')
         }, 500)
+        }
+    }
+
+    // check for win
+    function checkForWin() {
+        if (score === 274) {
+            ghosts.forEach(ghost => clearInterval(ghost.timerId))
+            document.removeEventListener('keyup', movePacman)
+            scoreDisplay.innerHTML = "YOU WON!"
+            alert('YOU WON!')
         }
     }
 })
